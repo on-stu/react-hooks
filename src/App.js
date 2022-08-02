@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useRef, useState } from "react";
+import "./App.css";
 
+const useNetwork = (onChange) => {
+  const [status, setStatus] = useState(navigator.onLine);
+
+  useEffect(() => {
+    setStatus(navigator.onLine);
+  }, [navigator]);
+  console.log(status);
+  return status;
+};
 function App() {
+  const network = useNetwork();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>{network}</h1>
+      <p>asdjfajifjei aiji</p>
     </div>
   );
 }
